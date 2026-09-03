@@ -6,6 +6,15 @@ LangSmith was used to provide trace-level observability for the AI component of 
 
 Monitoring is important because an AI workflow should not be treated as a black box.
 
+### Scope Note
+
+The LangSmith monitoring documented here applies to the Round 1
+proof of concept and trace evidence.
+
+LangSmith is not currently instrumented in the Round 2 FinRadar
+Gradio MVP runtime. Production-grade observability is recommended
+for a controlled pilot and later production deployment.
+
 ---
 
 ## What Was Monitored

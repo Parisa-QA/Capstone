@@ -1,0 +1,11 @@
+case_id,successful_runs,business_area_consistent,business_area_values,topic_consistent,topic_values,sentiment_consistent,sentiment_values,priority_consistent,priority_values,risk_type_consistent,risk_type_values,escalation_consistent,escalation_values,full_categorical_consistency
+1,3,True,Corporate | Corporate | Corporate,True,Other | Other | Other,True,Neutral | Neutral | Neutral,True,Low | Low | Low,True,None | None | None,True,False | False | False,True
+2,3,True,Corporate | Corporate | Corporate,True,M&A | M&A | M&A,True,Positive | Positive | Positive,True,Medium | Medium | Medium,True,None | None | None,True,False | False | False,True
+3,3,True,Corporate | Corporate | Corporate,True,Regulatory | Regulatory | Regulatory,True,Negative | Negative | Negative,True,High | High | High,True,Regulatory | Regulatory | Regulatory,True,True | True | True,True
+4,3,True,Corporate | Corporate | Corporate,True,Regulatory | Regulatory | Regulatory,True,Negative | Negative | Negative,True,High | High | High,True,Fraud | Fraud | Fraud,True,True | True | True,True
+6,3,True,Corporate | Corporate | Corporate,True,Legal | Legal | Legal,True,Negative | Negative | Negative,True,High | High | High,True,Legal | Legal | Legal,True,True | True | True,True
+8,3,True,Corporate | Corporate | Corporate,True,Risks | Risks | Risks,True,Negative | Negative | Negative,False,Medium | High | Medium,True,Operational Risk | Operational Risk | Operational Risk,False,False | True | False,False
+9,3,True,Corporate | Corporate | Corporate,True,Risks | Risks | Risks,True,Negative | Negative | Negative,True,High | High | High,True,Financial Risk | Financial Risk | Financial Risk,True,True | True | True,True
+10,3,True,Corporate | Corporate | Corporate,True,Regulatory | Regulatory | Regulatory,True,Negative | Negative | Negative,True,High | High | High,False,Regulatory | Compliance | Compliance,True,True | True | True,False
+12,3,True,Stock | Stock | Stock,True,Price Action | Price Action | Price Action,True,Positive | Positive | Positive,True,Low | Low | Low,True,None | None | None,True,False | False | False,True
+13,3,True,Corporate | Corporate | Corporate,True,Appointment | Appointment | Appointment,True,Neutral | Neutral | Neutral,True,Low | Low | Low,True,None | None | None,True,False | False | False,True

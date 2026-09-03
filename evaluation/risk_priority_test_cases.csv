@@ -1,0 +1,16 @@
+case_id,news_text,expected_priority,expected_risk_type,expected_escalation
+1,"Apple announces the date of its annual shareholder meeting next month.",Low,None,False
+2,"Microsoft announces the acquisition of a cybersecurity company for $4 billion.",Medium,None,False
+3,"Tesla faces a major regulatory investigation that could result in significant financial penalties.",High,Regulatory,True
+4,"A major bank is under investigation for alleged accounting fraud and could face substantial regulatory penalties.",High,Fraud,True
+5,"A pharmaceutical company receives regulatory approval for a new drug after completing clinical review.",Medium,None,False
+6,"A technology company is facing a major lawsuit alleging breach of contract and substantial financial damages.",High,Legal,True
+7,"A retailer reports a small increase in quarterly sales compared with the previous year.",Medium,None,False
+8,"A manufacturer temporarily shuts down a major production facility following a serious equipment failure.",High,Operational Risk,True
+9,"A company warns that severe liquidity problems could affect its ability to meet upcoming financial obligations.",High,Financial Risk,True
+10,"A financial institution is being investigated for serious failures in anti-money-laundering compliance controls.",High,Compliance,True
+11,"An analyst raises the price target for a technology stock following stronger-than-expected earnings.",Medium,None,False
+12,"Shares of a company rise 2% during normal trading after positive market commentary.",Low,None,False
+13,"A company appoints a new chief financial officer effective next quarter.",Medium,None,False
+14,"A regulator opens an enforcement investigation into possible violations of financial-market rules.",High,Regulatory,True
+15,"A cybersecurity incident disrupts a company's customer-facing systems and business operations.",High,Operational Risk,True

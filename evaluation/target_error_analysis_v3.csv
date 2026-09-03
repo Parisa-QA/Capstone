@@ -1,0 +1,31 @@
+_id,sentence,actual_target,pred_target,strict_correct,error_type,review_note,alias_aware_correct
+18154,"$TSLA TO RECALL 2,700 MODEL X SUVS FOR SEAT-BELT FIX",TSLA,"Tesla, Inc. (TSLA)",False,Alias / name expansion,"TSLA vs Tesla, Inc. (TSLA)",True
+659,UPDATE 5-Barclays Chairman McFarlane axes CEO to speed up strategic change,Barclays,Barclays,True,Strict match,,True
+18186,$FB  rejecting HIGHS shortable...at 109,FB,Facebook (ticker: FB),False,Alias / name expansion,FB vs Facebook (ticker: FB),True
+747,"Tesco, Asda sales fall as march of the discounters continues-Kantar",Asda,Tesco,False,Entity-selection disagreement,Multi-entity headline: Tesco and Asda,False
+726,Buffett's Company Reports 37 Percent Drop in 2Q Earnings,Berkshire Hathaway Inc.,Berkshire Hathaway,False,Alias / name expansion,Berkshire Hathaway Inc. vs Berkshire Hathaway,True
+19167,Is #Facebook's user engagement falling? https://t.co/tqMMt7N16X $FB https://t.co/sedqRWgdkt,FB,Meta Platforms (Facebook) - $FB,False,Alias / name expansion,FB vs Facebook / Meta,True
+18075,Windows 10 is awful why did it force an upgrade on my pc without my consent? #windows #Microsoft $msft,MSFT,Microsoft (MSFT),False,Alias / name expansion,MSFT vs Microsoft (MSFT),True
+69,Tesco share price dips as Blinkbox Books closes ending supermarket's digital ...,Tesco,Tesco,True,Strict match,,True
+18504,"Tesla Motors recalls 2,700 Model X SUVs $TSLA https://t.co/F55dx4aegI",TSLA,Tesla Motors (TSLA),False,Alias / name expansion,TSLA vs Tesla Motors (TSLA),True
+18932,@scottrade Why is $tsla not available for shorting at this time?  Same for $w?,W,"Tesla, Inc. (TSLA)",False,Entity-selection disagreement,Both TSLA and W appear,False
+19007,$tsla X recall not a big deal... the problem is now they will have an excuse to guide way way lower...,TSLA,"Tesla, Inc. (TSLA)",False,Alias / name expansion,"TSLA vs Tesla, Inc. (TSLA)",True
+897,UPDATE 5-SABMiller rejects AB InBev's $104 bln takeover approach,SAB Miller,SABMiller,True,Strict match,,True
+18096,$ENDP Was looking for a long entry but today's price action wasn't appealing,ENDP,ENDP (Endo International plc),False,Alias / name expansion,ENDP vs Endo International (ENDP),True
+908,AB InBev offers SABMiller $3 billion breakup fee,SAB Miller,SABMiller,True,Strict match,,True
+815,Horizonte acquires neighbouring Glencore nickel property in Brazil,Horizonte,Horizonte,True,Strict match,,True
+820,UPDATE 1-Engineering firm Smiths Group confirms CEO appointment,Morrissons,Smiths Group,False,Potential annotation mismatch,Sentence concerns Smiths Group; FiQA target is Morrissons,False
+939,AB InBev's Latest Bid Said Unlikely to Win SABMiller's Approval,SABMiller,Anheuser-Busch InBev (AB InBev),False,Entity-selection disagreement,AB InBev and SABMiller both appear,False
+965,SAB's Chairman Digs In With Board Divided on InBev Offer,SABMiller,SABMiller (SAB),False,Alias / name expansion,SABMiller vs SAB,True
+872,TalkTalk hires BAE Systems to investigate cyber attack,TalkTalk,TalkTalk,True,Strict match,,True
+67,Morrisons faces festive sales test,Morrisons,Wm Morrison Supermarkets (Morrisons),False,Alias / name expansion,Morrisons vs Wm Morrison Supermarkets,True
+835,ARM Holdings plc Partners With International Business Machines Corp. To Drive ...,ARM Holdings,ARM Holdings plc,False,Alias / name expansion,ARM Holdings vs ARM Holdings plc,True
+18047,"$TSLA lots of green on the 5 min, watch the hourly $259.33 possible resistance currently @ $257.00",TSLA,"Tesla, Inc. (TSLA)",False,Alias / name expansion,"TSLA vs Tesla, Inc. (TSLA)",True
+18077,$EXPE working on the second leg of its reversal run as it breaks another down trend and continues higher. https://t.co/76DSJysyR0,EXPE,Expedia Group (EXPE),False,Alias / name expansion,EXPE vs Expedia Group (EXPE),True
+18561,"$ENDP - we saw a large order in this one last week, someone also accumulating May & Jun 35's Calls today",ENDP,Endo International plc (ENDP),False,Alias / name expansion,ENDP vs Endo International (ENDP),True
+671,Diageo Sells Ryder Cup Venue Gleneagles Hotel to Ennismore Group,Gleneagles Hotel,Diageo plc,False,Entity-selection disagreement,Diageo transaction involving Gleneagles Hotel,False
+963,"EXCLUSIVE-BP, China's CNPC to unveil oil alliance - sources",CNPC,BP,False,Entity-selection disagreement,BP and CNPC both appear,False
+18196,"$CSX is up today to report.  Wall Street is expecting EPS to be at $0.37, and revenues at $2,732B.",CSX,CSX,True,Strict match,,True
+18747,$FB gone green on day,FB,FB (Facebook / Meta Platforms),False,Alias / name expansion,FB vs Facebook / Meta,True
+912,GSK joins China trade push as UK trumpets healthcare deals,GSK,GlaxoSmithKline (GSK),False,Alias / name expansion,GSK vs GlaxoSmithKline (GSK),True
+18145,#Fintech provider $CAFN Cachet Financial Solutions Surging Forward today post earnings Up +13.26% https://t.co/9BJ3csk2i9 $JKHY $FISV #Momo,CAFN,Cachet Financial Solutions (CAFN),False,Alias / name expansion,CAFN vs Cachet Financial Solutions (CAFN),True

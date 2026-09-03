@@ -1,287 +1,374 @@
-# AI Financial News Intelligence — Round 1 Capstone  
+# FinRadar AI
 
 **Author:** Parisa Dehghani  
-**Project:** AI Consultant & Integration Capstone — Round 1
+**Project:** AI Consultant & Integration Capstone — Round 2
 
-## Project Overview
+**Financial News Intelligence for Analysts**
 
-This capstone explores how AI can support financial and investment research teams by reducing the manual effort required to review, classify, summarize, and prioritize financial news.
+> **AI Assists — Humans Decide**
 
-The proposed solution is an **AI-assisted Financial News Triage system**.
+FinRadar AI is an AI-assisted financial-news intelligence application designed for investment research and wealth-management teams.
 
-The system is designed to support analysts and improve information triage. It is **not intended to make autonomous investment decisions, provide investment advice, or execute trades**.
+The project focuses on two core use cases:
 
----
+1. **Financial News Triage & Prioritization**
+2. **Risk & Regulatory Alerting**
 
-## Business Problem
+FinRadar helps analysts review public financial news more efficiently by producing structured classifications, summaries, priority levels, and risk alerts.
 
-Investment research analysts may need to review large volumes of financial headlines, news, and market commentary.
-
-Manual review can be:
-
-- Time-consuming
-- Difficult to prioritize consistently
-- Repetitive
-- Prone to missed high-risk information
-
-The main opportunity is to use AI as a first-level triage layer before analyst review.
+It does **not** provide investment advice, predict prices, make portfolio decisions, or execute trades.
 
 ---
 
-## Project Approach
+## Project Evolution
 
-The project follows an offline-first implementation strategy:
+FinRadar was developed in two stages.
 
-**Offline Data → Dashboard → AI Opportunities → POC → Evaluation → Monitoring → Live API → Hybrid Architecture**
+### Round 1 — Discovery and Proof of Concept
 
-Round 1 focuses on validating the concept before introducing a live financial-news API.
+Round 1 established the initial concept using:
 
----
+- **FiQA** as an offline financial-sentiment benchmark
+- **Tableau Public** for exploratory financial-news analysis
+- **n8n** for a no-code/low-code automation POC
+- **OpenAI GPT-5 Mini** for structured news classification
+- **LangSmith** for Round 1 POC trace-level observability
 
-## Data Source
 
-The primary offline dataset is the **FiQA 2018 financial sentiment dataset**.
+The n8n POC demonstrated:
 
-Dataset used:
+```text
+Manual News Input
+        |
+        v
+AI Classification
+        |
+        v
+Priority Rule
+        |
+   +----+----+
+   |         |
+   v         v
+Alert    Standard Queue
+```
 
-`TheFinAI/fiqa-sentiment-classification`
+### Round 2 — FinRadar AI MVP
 
-Total records:
+Round 2 extended the concept into a working analyst-facing application with:
 
-**1,173**
-
-Important fields:
-
-- sentence
-- target
-- aspect
-- score
-- type
-- split
-
-Derived fields created for this project:
-
-- Business_Area
-- Topic
-- Sentiment_Category
-
-FiQA provides a continuous sentiment score from -1 to +1.
-
-For dashboard visualization, this project derives sentiment categories using:
-
-- Positive: score > +0.2
-- Negative: score < -0.2
-- Neutral: score between -0.2 and +0.2 inclusive
-
-This categorization is project-defined and is not an official FiQA label.
-
----
-
-## BI Dashboard
-
-The Round 1 BI dashboard was created using **Tableau Public** as the agreed BI alternative.
-
-The dashboard includes:
-
-- Total financial items
-- Average sentiment
-- Positive items
-- Negative items
-- Financial sentiment distribution
-- Business area distribution
-- Average sentiment by topic
-- Top targets by mentions
-
-The dashboard is used to understand historical patterns in the offline FiQA dataset before designing the AI workflow.
-
-See:
-
-`dashboard/dashboard_documentation.md`
-
-Interactive Tableau Public dashboard:
-
-[View the AI Financial News Intelligence Dashboard on Tableau Public](https://public.tableau.com/app/profile/parisa.dehghani/viz/AIFinancialNewsIntelligence-Round1/AIFinancialNewsIntelligenceDashboard)
-
+- Live public financial news
+- AI-powered structured analysis
+- Risk and priority classification
+- Deterministic escalation rules
+- Manual public-news fallback
+- News pagination
+- Weekly Earnings Calendar
+- Accuracy and consistency evaluation
+- ROI and risk assessment
+- EU AI Act and GDPR documentation
+- Pilot and commercialisation strategy
 
 ---
 
-## AI Use Cases
+## Working MVP
 
-Three AI use cases were considered:
+The FinRadar MVP is built with:
 
-1. AI Financial News Triage & Prioritization
-2. AI Analyst Daily Briefing
-3. Risk & Regulatory Alerting
+- **Python**
+- **Gradio**
+- **Marketaux API**
+- **OpenAI GPT-5 Mini**
+- **Weekly Earnings API**
+- **Requests**
+- **python-dotenv**
 
-The selected Round 1 POC is:
+### Live News Workflow
 
-**AI Financial News Triage & Prioritization**
+```text
+Ticker
+  |
+  v
+Marketaux Live News
+  |
+  v
+Select Article
+  |
+  v
+GPT-5 Mini
+  |
+  v
+Structured Classification
+  |
+  v
+Deterministic Escalation
+  |
+  +-------------------+
+  |                   |
+  v                   v
+Standard Review    Risk Alert
+  |                   |
+  +---------+---------+
+            |
+            v
+       Human Analyst
+```
 
-It was selected because it combines high business value, good public-data availability, measurable outputs, and relatively low implementation complexity.
-
----
-
-## Automation POC
-
-The POC was created in **n8n** and uses the OpenAI API.
-
-Workflow:
-
-**Manual Input → OpenAI → Structured Output → Priority Rule → Alert / Standard Analyst Queue**
-
-The AI produces:
+The AI returns:
 
 - Target
 - Business Area
 - Topic
 - Sentiment
 - Priority
+- Risk Type
 - Summary
 
-High-priority items are routed to an immediate analyst-review path.
+A separate **Manual Public News** tab provides a fallback if the live-news service is unavailable.
 
-Standard items are routed to the normal analyst queue.
-
-See:
-
-`n8n/poc_documentation.md`
+The **Weekly Earnings Calendar** provides additional market context and is intentionally kept separate from the AI classification workflow.
 
 ---
 
-## Monitoring
+## Human Oversight
 
-**LangSmith** is used for trace-level observability.
+FinRadar uses a human-in-the-loop operating model.
 
-The monitoring setup allows inspection of:
+AI classification is combined with deterministic escalation logic for higher-risk cases.
 
-- Input
-- System prompt
-- Model output
-- Latency
-- Token usage
-- Estimated cost
-- Individual AI traces
+Examples include:
 
-This provides transparency into how the AI component behaves and supports debugging and future governance.
+- High Priority
+- Fraud
+- Negative Regulatory Risk
+- Negative Legal Risk
+- Negative Compliance Risk
 
-See:
-
-`langsmith/monitoring_documentation.md`
+The system supports analyst review rather than replacing professional judgment.
 
 ---
 
 ## Evaluation
 
-A balanced sample of **30 records** was selected from the FiQA test split:
+FinRadar was evaluated using:
 
-- 10 Positive
-- 10 Neutral
-- 10 Negative
+- FiQA benchmark samples
+- Manually labelled Risk and Priority cases
+- Repeated-run consistency testing
 
-Evaluation v1 results:
-
-| Metric | Accuracy |
+| Metric | Result |
 |---|---:|
-| Business Area Accuracy | 93.3% |
-| Strict Target Accuracy | 66.7% |
+| Strict Target Accuracy | 23.3% |
+| Alias-Aware Target Accuracy | 80.0% |
+| Business Area Accuracy | 90.0% |
 | Sentiment Accuracy | 66.7% |
-| Execution Errors | 0 / 30 |
+| Priority Accuracy | 86.7% |
+| Risk Type Accuracy | 93.3% |
+| Escalation Accuracy | 100.0% |
+| Full Categorical Consistency | 80.0% |
 
-A second prompt version was tested to improve sentiment classification.
+Strict Target Accuracy is lower because the benchmark requires exact string
+matching, while the model often returns expanded company names instead of
+ticker aliases (for example, a company name instead of its ticker symbol).
 
-Sentiment accuracy decreased from:
+Alias-Aware Target Accuracy treats equivalent company names and ticker aliases
+as matches.
 
-**66.7% → 56.7%**
+These results come from relatively small evaluation sets and are **not production guarantees**.
 
-The change was therefore rejected.
+See:
 
-This demonstrates the importance of evaluation and regression testing before deploying prompt or model changes.
-
-Evaluation files are stored in:
-
-`evaluation/`
-
----
-
-## Human-in-the-Loop Principle
-
-The system follows the principle:
-
-**AI assists — humans decide.**
-
-Analysts remain responsible for reviewing outputs and making investment-related decisions.
-
-The AI should not autonomously:
-
-- Buy or sell financial assets
-- Make investment decisions
-- Provide investment recommendations
-- Replace analyst judgment
+`evaluation/evaluation_summary_round2.md`
 
 ---
 
-## Round 1 Recommendation
+## Business Case
 
-The recommendation is:
+The Round 2 business case uses explicit planning assumptions rather than claiming realised company results.
 
-**GO for a controlled pilot — NOT for autonomous investment decision-making.**
+Base-case estimates include:
 
-The POC demonstrates technical feasibility, but target extraction and sentiment classification require further improvement before production use.
+- **12-month ROI:** 64.4%
+- **36-month ROI:** 206.0%
+- **Estimated break-even:** approximately 6.2 months
 
-The recommended next stage is a controlled pilot with:
+The business case also includes sensitivity analysis and a structured risk matrix.
 
-- Live financial data
-- Human review
-- Expanded evaluation
-- Monitoring
-- Governance
-- Clear success KPIs
+See:
+
+`roi_risk_assessment.md`
+
+---
+
+## Compliance and Governance
+
+The project includes dedicated documentation for:
+
+### EU AI Act
+
+The current FinRadar use case is assessed as a **non-high-risk AI system under its present intended purpose**, subject to reassessment if the scope changes.
+
+See:
+
+`compliance/eu_ai_act_compliance.md`
+
+### GDPR
+
+The GDPR documentation covers:
+
+- Data flows
+- Processing purposes
+- Proposed legal basis
+- Retention
+- Data-subject rights
+- Third-party providers
+- Cross-border considerations
+- Short DPIA-style assessment
+
+See:
+
+`compliance/gdpr_documentation.md`
+
+The project uses public financial information only and does not intentionally process client portfolio data or private customer records.
+
+---
+
+## Strategic Recommendation
+
+FinRadar should progress through:
+
+```text
+POC
+ |
+ v
+Working MVP
+ |
+ v
+Controlled Analyst Pilot
+ |
+ v
+Evaluation / Governance Review
+ |
+ v
+Production Decision
+```
+
+Immediate full production deployment is **not** recommended.
+
+The next step is a controlled analyst pilot with defined KPIs, human oversight, security review, monitoring, and compliance approval.
+
+See:
+
+`strategic_plan.md`
+
+---
+
+## Run the MVP
+
+Install the MVP dependencies:
+
+```bash
+python -m pip install -r mvp/requirements.txt
+```
+
+Create a local `.env` file using `.env.example` as the template.
+
+Required MVP credentials include:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+MARKETAUX_API_KEY=your_marketaux_api_key_here
+```
+
+Then run:
+
+```bash
+python mvp/app.py
+```
+
+The local Gradio application normally starts at:
+
+```text
+http://127.0.0.1:7860
+```
+
+API keys must never be committed to Git.
+
+---
+
+## Main Project Documentation
+
+| Area | File |
+|---|---|
+| Use Case & Scope | `use_case_definition.md` |
+| MVP Documentation | `mvp/mvp_documentation.md` |
+| Evaluation | `evaluation/evaluation_summary_round2.md` |
+| ROI & Risk | `roi_risk_assessment.md` |
+| Strategic Plan | `strategic_plan.md` |
+| EU AI Act | `compliance/eu_ai_act_compliance.md` |
+| GDPR | `compliance/gdpr_documentation.md` |
+| n8n POC | `n8n/poc_documentation.md` |
+| LangSmith Round 1 Monitoring | `langsmith/monitoring_documentation.md` |
+| Round 1 Historical Notes | `capstone.md` |
 
 ---
 
 ## Repository Structure
 
 ```text
-CAPSTONE/
-├── cost_estimation/
-│   └── cost_timeline.md
-│
+Capstone/
+├── compliance/
 ├── dashboard/
-│   ├── dashboard_documentation.md
-│   └── dashboard assets / screenshots
-│
 ├── data/
-│   └── fiqa_powerbi_ready.csv
-│
 ├── evaluation/
-│   ├── fiqa_evaluation_v1_metrics.csv
-│   ├── fiqa_evaluation_v1_results.csv
-│   └── fiqa_prompt_iteration_comparison.csv
-│
 ├── feedback/
-│   └── round1_decision.md
-│
 ├── langsmith/
-│   ├── langsmith-trace.png
-│   └── monitoring_documentation.md
-│
+├── mvp/
+│   ├── app.py
+│   ├── assets/
+│   ├── screenshots/
+│   ├── mvp_documentation.md
+│   └── requirements.txt
 ├── n8n/
-│   ├── AI Financial News Triage POC.json
-│   ├── n8n-workflow.png
-│   ├── high-priority-test.png
-│   └── poc_documentation.md
-│
 ├── presentation/
-│   └── Round 1 presentation
-│
 ├── research/
-│   ├── 01_research_summary.md
-│   ├── 02_sources.md
-│   ├── 03_data_source_selection.md
-│   ├── 04_live_api_options.md
-│   ├── opportunities_risks.md
-│   └── use_cases.md
-│
+├── capstone.md
+├── roi_risk_assessment.md
+├── strategic_plan.md
+├── use_case_definition.md
 ├── .env.example
-├── README.md
-└── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+---
+
+## Scope Limitations
+
+FinRadar currently excludes:
+
+- Investment recommendations
+- Automated trading
+- Price prediction
+- Portfolio decisions
+- Private client documents
+- Customer portfolio data
+- Enterprise authentication
+- Production audit databases
+
+LLM outputs can vary, external APIs can become unavailable, and some financial-news categories remain ambiguous.
+
+Human review therefore remains mandatory.
+
+---
+
+## Final Recommendation
+
+FinRadar demonstrates that the original Round 1 automation concept can be developed into a functional AI-assisted financial-news intelligence application.
+
+The project provides technical evidence, systematic evaluation, an ROI case, compliance analysis, and a deployment strategy.
+
+The recommended decision is:
+
+> **Proceed to a controlled analyst pilot — not autonomous production deployment.**
+
+**AI Assists — Humans Decide**
